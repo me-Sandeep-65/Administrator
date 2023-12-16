@@ -121,16 +121,16 @@ public class login extends JFrame implements ActionListener, WindowListener{
                 String u = t1.getText();
                 String v = t2.getText();
             
-                String q = "select role from login where username='"+u+"' and password='"+v+"'";
+//                String q = "select role from login where username='"+u+"' and password='"+v+"'";
                 
-                ResultSet rs = c1.s.executeQuery(q); 
+                ResultSet rs = c1.s.executeQuery("select role,empid from login where username='"+u+"' and password='"+v+"'"); 
                 if(rs.next()){
                     String s=rs.getString("role");
                     if(s.equals("admin")) {
-                        new admin(s);
+                        new admin(rs.getString("empid"));
                     }
                     else if(s.equals("library")){
-                        new library(s);
+                        new library(rs.getString("empid"));
                     }
                     
                     fr.dispose();
