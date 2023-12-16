@@ -2,10 +2,8 @@
 package administrator;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
@@ -61,20 +59,7 @@ public class Administrator extends JFrame implements ActionListener{
         l1.add(b1);
         add(l1);
         b1.addActionListener(this);
-        setVisible(true);
-        validate();
-    }
-    
-    @Override
-    public void actionPerformed(ActionEvent ae){
-        new login(this).setVisible(true);
-    }
-        
-    public static void main(String[] args) {
-        Administrator window = new Administrator();
-        window.setVisible(true);
-       
-        window.addComponentListener(new ComponentListener(){
+        addComponentListener(new ComponentListener(){
             @Override
             public void componentHidden(ComponentEvent e){}
             @Override
@@ -90,6 +75,18 @@ public class Administrator extends JFrame implements ActionListener{
                 b1.setFont(new Font("serif",Font.BOLD ,(b1.getWidth() + b1.getHeight())/8));
             }
         });
+        setVisible(true);
+        validate();
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent ae){
+        new login(this).setVisible(true);
+    }
+        
+    public static void main(String[] args) {
+        Administrator window = new Administrator();
+        window.setVisible(true);
     }
 }
 
